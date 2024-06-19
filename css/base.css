@@ -1,0 +1,370 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 16px;
+	--page-padding: 2rem;
+	--color-text: #000;
+	--color-bg: #fff;
+	--color-link: #000;
+	--color-link-hover: #000;
+	--color-list-item: #000;
+	--color-title: #000;
+	--color-number: #000;
+  --color-bg-effect: white;
+  --blendmode-effect: difference;
+  --bg-blur: 0px;
+  --font-size-list-item: 18px;
+}
+
+body {
+	margin: 0;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: "JetBrains Mono", monospace;
+	font-weight: 300;
+	font-optical-sizing: auto;
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	min-height: 100vh;
+}
+
+body::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-image: repeating-linear-gradient(transparent, transparent 2px, #0000003d 3px);
+	background-size: auto 100%;
+	pointer-events: none;
+}
+
+.demo-2 {
+	--color-text: #fff;
+  --color-bg: #252a33;
+  --color-link: #717781;
+  --color-link-hover: #fff;
+  --color-list-item: #c7c0b3;
+  --color-title: #5b6b85;
+  --color-number: #fff;
+}
+
+.demo-3 {
+	--color-text: #fff;
+	--color-bg: #1d2619;
+	--color-link: #8adcc0;
+	--color-link-hover: #fff;
+	--color-list-item: #c5c5c5;
+	--color-title: #41483e;
+	--color-number: #fff;
+}
+
+.demo-4 {
+	background-image: url(../img/noise.png), url(../img/bg.jpg);
+	background-size: 100px, cover;
+	background-position: 50% 50%;
+	--color-text: #fff;
+	--color-bg: #000;
+	--color-link: #515151;
+	--color-link-hover: #fff;
+	--color-list-item: #ffffffd9;
+	--color-title: #2d2d2d;
+	--color-number: #615f60;
+	--color-bg-effect: rgb(229 222 204 / 10%);
+	--blendmode-effect: none;
+	--bg-blur: 5px;
+	--font-size-list-item: clamp(1rem, 4vw, 2rem);
+}
+
+.demo-4::after {
+  display: none;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	justify-content: space-between;
+}
+
+.demo-5 main {
+	mix-blend-mode: difference;
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+	cursor: pointer;
+}
+
+a:hover {
+	text-decoration: none;
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+	/* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+	outline: none;
+}
+
+a:focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+	outline: 2px solid red;
+}
+
+.unbutton {
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+.unbutton:focus {
+	outline: none;
+}
+
+.frame {
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	padding: var(--page-padding);
+	position: relative;
+	display: grid;
+	grid-row-gap: 1rem;
+	grid-column-gap: 2rem;
+	pointer-events: none;
+	justify-items: start;
+	grid-template-columns: auto auto;
+	grid-template-areas: 'title' 'archive' 'back' 'github' 'sponsor' 'demos';
+}
+
+.frame #cdawrap {
+  justify-self: end;
+  text-align: right;
+}
+
+.frame a {
+  pointer-events: auto;
+}
+
+.frame__title {
+  grid-area: title;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+.frame__back {
+  grid-area: back;
+  justify-self: start;
+}
+
+.frame__archive {
+  grid-area: archive;
+  justify-self: start;
+}
+
+.frame__sub {
+  grid-area: sub;
+}
+
+.frame__github {
+  grid-area: github;
+}
+
+.frame__tags {
+  grid-area: tags;
+}
+
+.frame__hire {
+  grid-area: hire;
+}
+
+.frame__demos {
+	grid-area: demos;
+	display: flex;
+	gap: 1rem;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	padding: 0 var(--page-padding) 2rem;
+	justify-content: center;
+}
+
+.content__title {
+	font-size: 12px;
+	color: var(--color-title);
+}
+
+.spacer {
+	margin-top: 15vh;
+}
+
+.list {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	counter-reset: item 0;
+}
+
+.content p {
+	padding: 5vh var(--page-padding) 0;
+	font-size: 12px;
+	max-width: 900px;
+}
+
+.list__item {
+	font-size: var(--font-size-list-item);
+	cursor: pointer;
+	width: 100%;
+	display: grid;
+	color: var(--color-list-item);
+	grid-column-gap: 2rem;
+	padding: 0.5rem 0;
+	grid-template-columns: 100%;
+	justify-content: space-between;
+	align-items: start;
+	justify-items: start;
+}
+
+.demo-4 .list__item {
+	padding: 0.85rem 0;
+}
+
+.list__item::before {
+	color: var(--color-number);
+  content: counter(item, decimal-leading-zero);
+  counter-increment: item;
+  font-weight: 500;
+  padding: 3px 3px 0;
+	line-height: 0.8;
+}
+
+.demo-4 .list__item::before {
+	font-size: 0.8rem;
+}
+
+.list--alt .list__item::before {
+  content: "EVT#" counter(item, decimal-leading-zero) "0";
+}
+
+.list__item-col {
+	flex: none;
+	padding: 3px 3px 0;
+	line-height: 0.8;
+}
+
+.hover-effect .word {
+  white-space: nowrap;
+}
+
+.hover-effect .char {
+  position: relative
+}
+
+.hover-effect {
+  font-kerning: none;
+  position: relative;
+  white-space: nowrap;
+}
+
+.hover-effect--cursor-square .char {
+  --opa: 0;
+}
+
+.hover-effect--cursor-square .char::after {
+	content: '';
+	width: 1ch;
+	top: 0;
+	left: 0;
+	position: absolute;
+	opacity: var(--opa);
+}
+
+.hover-effect--cursor-square .char::after {
+  background: currentColor;
+  height: 100%;
+}
+
+.hover-effect--bg,
+.hover-effect--bg-south {
+  --anim: 0;
+}
+
+.hover-effect--bg::after,
+.hover-effect--bg-south::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: calc(100% + 3px);
+	top: 0;
+	background-color: var(--color-bg-effect);
+	mix-blend-mode: var(--blendmode-effect);
+	-webkit-backdrop-filter: blur(var(--bg-blur));
+	backdrop-filter: blur(var(--bg-blur));
+  transform-origin: 0% 50%;
+	transform: scaleX(var(--anim));
+}
+
+.hover-effect--bg-south::after {
+	z-index: -1;
+	left: -8px;
+	right: -8px;
+	top: -8px;
+	bottom: -8px;
+	border-radius: 2px;
+	height: auto;
+	width: auto;
+	transform-origin: 50% 100%;
+	transform: scaleY(var(--anim));
+}
+
+@media screen and (min-width: 40em) {
+	.list__item {
+		grid-template-columns: auto 1fr 1fr 1fr auto;
+	}
+	
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		grid-template-columns: auto auto auto auto 1fr 1fr;
+		grid-template-areas: 'title back archive github demos sponsor';
+	}
+	.frame #cdawrap, 
+	.frame__demos {
+		justify-self: end;
+	}
+}
+
+@media screen and (min-width: 73em) {
+	.list__item {
+		grid-template-columns: 100px 30% 1fr 1fr 1fr;
+	}
+	.demo-4 .list__item {
+		grid-template-columns: 100px 1fr 1fr auto ;
+	}
+	.list__item-col:last-child {
+		justify-self: end;
+	}
+}
