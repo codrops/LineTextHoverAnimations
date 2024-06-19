@@ -9,7 +9,7 @@
 	--page-padding: 2rem;
 	--color-text: #000;
 	--color-bg: #fff;
-	--color-link: #000;
+	--color-link: rgba(0,0,0,0.8);
 	--color-link-hover: #000;
 	--color-list-item: #000;
 	--color-title: #000;
@@ -146,6 +146,7 @@ a:focus-visible {
 	display: grid;
 	grid-row-gap: 1rem;
 	grid-column-gap: 2rem;
+	align-items: start;
 	pointer-events: none;
 	justify-items: start;
 	grid-template-columns: auto auto;
@@ -153,8 +154,7 @@ a:focus-visible {
 }
 
 .frame #cdawrap {
-  justify-self: end;
-  text-align: right;
+	justify-self: start;
 }
 
 .frame a {
@@ -354,6 +354,9 @@ a:focus-visible {
 	.frame #cdawrap, 
 	.frame__demos {
 		justify-self: end;
+	}
+	.frame #cdawrap {
+	  text-align: right;
 	}
 }
 
